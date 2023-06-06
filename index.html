@@ -44,7 +44,7 @@
         <p>
             My approach was to use a pretrained model and do transfer learning on it for the birds training dataset. I did this by reinitializing the final 
             fully connected layer and then training the model on the training dataset. I first did this by following the collab, but the performance was
-            around 60% accuracy so I needed to figure what would push me to higher accuracy. So I first tried with playing around with how the data was being
+            around 56% accuracy so I needed to figure what would push me to higher accuracy. So I first tried with playing around with how the data was being
             transformed, I found that the horizontal flip helped performance by making it harder for the model to over fit to the training data. Changing the
             resize to 256 instead of 128 also improved performance. After this I realized that I was using resnet18 and there was a larger model called resnet50,
             so I ended up switching to that. However, I did run into "out of memory" issues, so I had to drop the batch size to 64. I also had to get the number 
@@ -54,12 +54,14 @@
         </p>
         <p>
             My next big leap was using the resnet50d model from timm. I chose this model since from all the image classification models this one was
-            in the top 10 performers on the ImageNet-1k dataset. Initially, I struggled to get any performance better than what I already had as I followed 
+            in the top 10 performers on the ImageNet-1k dataset and it was similar to the resnet50 model that had already performed well. 
+            Initially, I struggled to get any performance better than what I already had as I followed 
             the getting started article and the training time was over 6 hours for worse accuracy. I tried tweaking hyperparameters and data transformations, but 
             nothing made any substantial impact on the accuracy. Then I went and read through the documentation and it said that I should transform my data 
             in similar fashion to how the model was initially trained, so I just followed that and it slightly improved performance. What made the difference 
             was changing the center crop to a random crop and adding the random horizontal flipping. I was able to train for 13 epochs before overfitting 
-            became a problem, this is what I did to get my best performing model.
+            became a problem, this is what I did to get my best performing model.<br>
+            <b>Code can be found here: </b>
         </p>
     </div>
     <div class="section">
@@ -72,6 +74,18 @@
     </div>
     <div class="section">
         <h2>Results</h2>
+        <p>
+            These results are from my submissions to the Kaggle competition.<br>
+            <b>Highest Accuracy Using resnet50d: 85.75%</b> (my highest accuracy in the competition)<br>
+            <b>Highest Accuracy Using resnet50: 83.65%</b><br>
+        </p>
+        <p>
+            At the moment of writing this I am second place in the competition. I struggled to get past 80% accuracy when initially working with the 
+            resnet50d model as everything I tried made little difference. Eventually getting the accuracy by changing the transforms on the data which helped 
+            with avoiding overfitting. This was obvious since the model was overfitting at 7 epochs before (accuracy was dropping if I trained for more epochs)
+            while now it was overfitting after 13 epochs. This was the same pattern as resnet50 so I figured that a lot of the accuracy gains I was going to
+            make were from the transformations applied to the dataset.
+        </p>
     </div>
     <div class="section">
         <h2>Discussion</h2>
