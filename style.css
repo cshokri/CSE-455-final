@@ -1,0 +1,40 @@
+:root {
+    --highlight: #0E1140;
+    --primary: #404259;
+    --secondary: #515373;
+    --background: #F2EFEB;
+    --contrast: #0D0D0D;
+}
+
+body {
+    text-align: center;
+    color: var(--primary);
+    background-color: var(--background);
+    font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+    color: var(--highlight);
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: 100px;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 35px
+}
+
+p {
+    text-indent: 6%;
+    text-align: left;
+    max-width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 25px;
+}
+
+.section {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
