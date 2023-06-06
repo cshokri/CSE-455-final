@@ -40,7 +40,7 @@
         </p>
     </div>
     <div class="section">
-        <h2>Your approach</h2>
+        <h2>My approach</h2>
         <p>
             My approach was to use a pretrained model and do transfer learning on it for the birds training dataset. I did this by reinitializing the final 
             fully connected layer and then training the model on the training dataset. I first did this by following the collab, but the performance was
@@ -61,7 +61,7 @@
             in similar fashion to how the model was initially trained, so I just followed that and it slightly improved performance. What made the difference 
             was changing the center crop to a random crop and adding the random horizontal flipping. I was able to train for 13 epochs before overfitting 
             became a problem, this is what I did to get my best performing model.<br>
-            <b>Code can be found here: </b>
+            <b>Code can be found here: </b><a href="https://github.com/cshokri/CSE-455-final/blob/main/BirdTrainer.py">https://github.com/cshokri/CSE-455-final/blob/main/BirdTrainer.py</a>
         </p>
     </div>
     <div class="section">
@@ -75,9 +75,9 @@
     <div class="section">
         <h2>Results</h2>
         <p>
-            These results are from my submissions to the Kaggle competition.<br>
+            These results are from my submissions to the Kaggle competition.<br><br>
             <b>Highest Accuracy Using resnet50d: 85.75%</b> (my highest accuracy in the competition)<br>
-            <b>Highest Accuracy Using resnet50: 83.65%</b><br>
+            <b>Highest Accuracy Using resnet50: 83.65%</b><br><br>
         </p>
         <p>
             At the moment of writing this I am second place in the competition. I struggled to get past 80% accuracy when initially working with the 
@@ -89,6 +89,33 @@
     </div>
     <div class="section">
         <h2>Discussion</h2>
+        <ul>
+            <li>
+                <div class="question"><b>What problems did you encounter?</b></div>
+                <p class="answer">
+                    I initially struggled with getting the project up and running even though I was following along with the transfer learning collab.
+                    The issue ended up being with the formatting of the csv file which after changing, fixed the errors. I also had errors when using
+                    resnet50 as the number of features was different than resnet18, so I had to figure out how to get that from the final layer before
+                    I reinitialized it. Then there was the gpu running out of memory issue which I fixed by reducing the batch size to 64.
+                </p>
+            </li>
+            <li>
+                <div class="question"><b>Are there next steps you would take if you kept working on the project?</b></div>
+                <p class="answer">
+                    I would probably spend more time researching about classification models, what works, what doesn't, and what are best practices. I would 
+                    also try to use some of the other pretrained models to see how they performed. I just tried to stick with the limited knowledge I had 
+                    as I didn't want to potentially waste time trying something new when I could still improve my accuracy with what I already knew.
+                </p>
+            </li>
+            <li>
+                <div class="question"><b>How does your approach differ from others? Was that beneficial?</b></div>
+                <p class="answer">
+                    Well I don't know what approaches other people went with, but assuming a lot of people followed the collabs then I would say that
+                    switching models is a large part of what helped me break away from everyone else. I also tried to get as much performance by slightly
+                    tweaking hyperparameters. I believe my efforts were beneficial as I am currently in second place in the competition.
+                </p>
+            </li>
+        </ul>
     </div>
 
 </body>

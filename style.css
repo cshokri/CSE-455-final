@@ -34,6 +34,12 @@ p {
     line-height: 25px;
 }
 
+li {
+    max-width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 i {
     color: var(--highlight)
 }
@@ -45,4 +51,13 @@ b {
 .section {
     margin-top: 45px;
     margin-bottom: 45px;
+}
+
+.question {
+    text-align: left;
+}
+
+.answer {
+    text-indent: 0;
+    max-width: fit-content;
 }
