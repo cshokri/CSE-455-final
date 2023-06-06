@@ -34,6 +34,14 @@ p {
     line-height: 25px;
 }
 
+i {
+    color: var(--highlight)
+}
+
+b {
+    color: var(--highlight)
+}
+
 .section {
     margin-top: 45px;
     margin-bottom: 45px;

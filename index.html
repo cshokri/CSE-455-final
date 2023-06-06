@@ -28,12 +28,47 @@
     </div>
     <div class="section">
         <h2>Previous work</h2>
+        <p>
+            I used PyTorch so I was able to reference the 
+            <a href="https://github.com/huggingface/pytorch-image-models#getting-started-documentation">image models GitHub repository</a>.
+            I went through the getting started part of the README which led me to using <i>timm</i> which is an open-source collection of
+            PyTorch image models. I then used the <b>resnet50</b> and <b>resnet50d</b> pretrained models. I also referenced the documentation at
+            <a href="https://huggingface.co/docs/hub/timm">huggingface</a> and the corresponding
+            <a href="https://towardsdatascience.com/getting-started-with-pytorch-image-models-timm-a-practitioners-guide-4e77b4bf9055">Getting Started</a> article.
+            I also referenced the <a href="https://colab.research.google.com/drive/1EBz4feoaUvz-o_yeMI27LEQBkvrXNc_4?usp=sharing#scrollTo=vw2LBA8_WzPj">transfer learning collab</a> 
+            for setting up the code to train a model.
+        </p>
     </div>
     <div class="section">
         <h2>Your approach</h2>
+        <p>
+            My approach was to use a pretrained model and do transfer learning on it for the birds training dataset. I did this by reinitializing the final 
+            fully connected layer and then training the model on the training dataset. I first did this by following the collab, but the performance was
+            around 60% accuracy so I needed to figure what would push me to higher accuracy. So I first tried with playing around with how the data was being
+            transformed, I found that the horizontal flip helped performance by making it harder for the model to over fit to the training data. Changing the
+            resize to 256 instead of 128 also improved performance. After this I realized that I was using resnet18 and there was a larger model called resnet50,
+            so I ended up switching to that. However, I did run into "out of memory" issues, so I had to drop the batch size to 64. I also had to get the number 
+            of features from the final layer to use when I reinitialized it since this number was different from resnet18. I trained for 13 epochs and on the 
+            last epoch I set the learning rate to 0.001 so the model wouldn't try to learn something completely new on the last epoch and just squeeze out as much 
+            performance out of it.
+        </p>
+        <p>
+            My next big leap was using the resnet50d model from timm. I chose this model since from all the image classification models this one was
+            in the top 10 performers on the ImageNet-1k dataset. Initially, I struggled to get any performance better than what I already had as I followed 
+            the getting started article and the training time was over 6 hours for worse accuracy. I tried tweaking hyperparameters and data transformations, but 
+            nothing made any substantial impact on the accuracy. Then I went and read through the documentation and it said that I should transform my data 
+            in similar fashion to how the model was initially trained, so I just followed that and it slightly improved performance. What made the difference 
+            was changing the center crop to a random crop and adding the random horizontal flipping. I was able to train for 13 epochs before overfitting 
+            became a problem, this is what I did to get my best performing model.
+        </p>
     </div>
     <div class="section">
         <h2>Datasets</h2>
+        <p>
+            I only used the training dataset and all the other files that came from the <a href="https://www.kaggle.com/competitions/birds23sp/data">Kaggle competition</a>. 
+            I didn't want to try to add my own bird images and label them since I thought that the given dataset was sufficient. Also, I don't know much about 
+            birds and I don't want to contaminate my dataset with the wrong species of birds.
+        </p>
     </div>
     <div class="section">
         <h2>Results</h2>
