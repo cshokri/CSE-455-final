@@ -131,6 +131,6 @@ if __name__ == '__main__':
     resnet.fc = nn.Linear(num_features, num_classes)
     state = torch.load(checkpoints + 'checkpoint-15.pkl')
     resnet.load_state_dict(state['net'])
-    losses = train(resnet, data['train'], epochs=17, schedule={0:.01, 16:.001}, lr=.01, print_every=10, checkpoint_path=checkpoints, state=state)
+    losses = train(resnet, data['train'], epochs=15, schedule={0:.01, 14:.001}, lr=.01, print_every=10, checkpoint_path=checkpoints, state=state)
 
     predict(resnet, data['test'], checkpoints + "preds.csv")
